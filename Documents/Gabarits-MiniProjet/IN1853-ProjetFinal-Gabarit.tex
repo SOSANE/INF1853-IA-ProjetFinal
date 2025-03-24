@@ -1,0 +1,85 @@
+\documentclass[a4paper,12pt]{article}
+% Packages nécessaires  
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.75cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphicx}   
+\usepackage{booktabs}    
+\usepackage{hyperref}    
+\usepackage{amsmath}     
+\usepackage{amsfonts}    
+\usepackage{amssymb}     
+\usepackage{mathrsfs}    
+\usepackage{tikz}        
+\usepackage{multirow}    
+\usepackage{multicol}    
+
+
+\begin{document}
+
+% Titre du document
+\title{\textbf{Titre du Projet}}
+
+\author{
+    \small 
+    \begin{tabular}{ccc}
+        \textbf{Auteur 1} & \textbf{Auteur 2} & \textbf{Auteur 3} \\
+        ABCD75350201 & EFGH75350202 & IJKL75350203 \\
+        \textit{Email1@uqo.ca} & \textit{Email2@uqo.ca} & \textit{Email3@uqo.ca} \\
+    \end{tabular}
+}
+		
+\normalsize
+\date{}
+\maketitle
+
+% Abstract
+\begin{abstract}
+    Voici un résumé succinct de votre rapport. Cet abstract devrait fournir un aperçu des objectifs, méthodes, résultats et conclusions de votre étude. Le résume doit avoir au plus 150 mots.
+\end{abstract}
+
+% Mots clés
+\textbf{Mots clés :} Intelligence artificielle, évaluation comparative, algorithmes, rapport étudiant.
+
+% Début du texte principal
+\section{Introduction}
+Ce rapport présente une évaluation comparative des algorithmes d'intelligence artificielle \cite{nom2023}. L'objectif est de comprendre les performances de divers algorithmes dans des contextes spécifiques \cite{article1,book1}.
+
+\section{Évaluation des algorithmes}
+\begin{table}[ht]
+    \centering
+    \caption{Évaluation comparative des algorithmes IA}
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        \textbf{Algorithme} & \textbf{Précision} & \textbf{Temps d'exécution} \\ \midrule
+        Algorithme A & 85\% & 10s \\
+        Algorithme B & 90\% & 8s \\
+        Algorithme C & 75\% & 12s \\
+        Algorithme D & 92\% & 7s \\ \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{img/im1.png}
+    \caption{SVM avec noyau linéaire}
+\end{figure}
+
+% Exemples d'équations
+\section{Exemples d'équations mathématiques}
+Voici quelques exemples d'équations mathématiques :
+
+\begin{align}
+    E = mc^2 \tag{1} \\
+    a^2 + b^2 = c^2 \tag{2}
+\end{align}
+
+% Bibliographie
+\newpage
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}

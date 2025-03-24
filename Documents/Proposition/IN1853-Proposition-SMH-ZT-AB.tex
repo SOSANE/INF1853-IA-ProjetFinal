@@ -1,0 +1,84 @@
+\documentclass[a4paper,12pt]{article}
+% Packages nécessaires  
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.75cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{graphicx}   
+\usepackage{booktabs}    
+\usepackage{hyperref}    
+\usepackage{amsmath}     
+\usepackage{amsfonts}    
+\usepackage{amssymb}     
+\usepackage{mathrsfs}    
+\usepackage{tikz}        
+\usepackage{multirow}    
+\usepackage{multicol}    
+
+
+\begin{document}
+
+% Titre du document
+\title{\textbf{Proposition de Projet : Détection de Tumeurs par Analyse d'Images Médicales \newline \large Une Approche Basée sur l'Intelligence Artificielle}}
+
+\author{
+    \small 
+    \begin{tabular}{ccc}
+        \textbf{Sosane Mahamoud Houssein} & \textbf{Zeïnab Touré} & \textbf{Abidé Badjoudoum} \\
+        HOUS92310307 & TOUZ63280208 & BADA09349800 \\
+        \textit{hous44@uqo.ca} & \textit{touz08@uqo.ca} & \textit{bada20@uqo.ca} \\
+    \end{tabular}
+}
+		
+\normalsize
+\date{}
+\maketitle
+
+% Abstract
+\begin{abstract}
+    L'analyse d'images médicales est un domaine clé en intelligence artificielle, permettant d'améliorer le diagnostic et la prise en charge des patients. Ce projet vise à développer un modèle de détection de tumeurs à partir d'images médicales en utilisant des techniques d'apprentissage automatique et de deep learning.
+\end{abstract}
+
+% Mots clés
+\textbf{Mots clés :} Intelligence artificielle, apprentissage automatique, évaluation comparative, algorithmes, rapport étudiant.
+
+\section{Introduction}
+L'intelligence artificielle (IA) est de plus en plus utilisée dans le domaine médical, notamment pour l'analyse d'images médicales. La détection précoce des tumeurs est cruciale pour améliorer le diagnostic et le traitement des patients atteints de maladies graves telles que le cancer. Ce projet vise à proposer une approche basée sur l'IA pour identifier automatiquement les tumeurs dans des images médicales.
+
+\section{Problématique}
+Le diagnostic des tumeurs repose généralement sur l'analyse manuelle d'images par des spécialistes, ce qui peut être long et sujet à des erreurs. L'objectif de ce projet est d'explorer comment l'IA peut être utilisée pour améliorer la précision et la rapidité de détection des tumeurs dans des images médicales (IRM, scanner, radiographies).
+
+\section{Objectifs du Projet}
+\begin{itemize}
+    \item Développer un modèle d'intelligence artificielle capable d'identifier des tumeurs dans des images médicales.
+    \item Comparer différentes techniques d'apprentissage profond et d'apprentissage automatique pour cette tâche.
+    \item Évaluer la précision et la fiabilité du modèle sur un ensemble de données médicales.
+\end{itemize}
+
+\section{Méthodologie Envisagée}
+\subsection{Collecte de Données}
+Nous utiliserons des bases de données d'images médicales annotées.
+
+\subsection{Prétraitement des Données}
+Les images seront normalisées et filtrées pour améliorer leur qualité avant d'être utilisées pour l'entraînement du modèle.
+
+\subsection{Choix des Modèles}
+Nous expérimenterons avec des réseaux de neurones convolutifs (CNN), adaptés à la classification et la segmentation d'images médicales. Nous testerons aussi avec d'autres algorithmes tels que SVM, Naive Bayes etc.
+
+\subsection{Entraînement et Évaluation}
+Le modèle sera entraîné et évalué sur des ensembles de données d'entraînement et de test. Nous utiliserons des métriques telles que la précision, le rappel et la courbe ROC pour évaluer ses performances.
+
+\section{Résultats Attendus}
+Nous espérons obtenir un modèle performant capable d'identifier les tumeurs avec un haut degré de précision. Ce projet pourrait contribuer à améliorer le diagnostic médical et faciliter le travail des professionnels de santé.
+
+\section{Conclusion}
+Ce projet vise à démontrer l'intérêt de l'IA pour la détection des tumeurs à partir d'images médicales. Après validation de cette proposition, nous affinerons notre méthodologie et commencerons l'implémentation.
+
+% Bibliographie
+\newpage
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
