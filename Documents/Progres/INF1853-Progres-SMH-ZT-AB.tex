@@ -21,6 +21,9 @@
 \usepackage{tikz}
 \usepackage{multirow}
 \usepackage{multicol}
+\usepackage[style=numeric, backend=biber]{biblatex}
+\addbibresource{references.bib}
+
 
 
 % Titre du document
@@ -49,7 +52,13 @@ Ce document présente l'avancement de notre projet de détection de tumeurs mamm
 
 \section{État d'Avancement}
 \subsection{Données Utilisées}
-Nous travaillons avec le jeu de données de \cite{al2020dataset} qui contient :
+Les résultats proviennent de données récentes\footnote{Al-Dhabyani, W. et al. (2020).
+\textit{Dataset of breast ultrasound images}. Data in Brief, 28, 104863.
+DOI: \url{10.1016/j.dib.2019.104863}.}.
+
+\linebreak
+
+Le jeu de données contient :
 \begin{itemize}
     \item 780 images ultrasonores (format PNG)
     \item Résolution moyenne : $500 \times 500$ pixels
@@ -60,13 +69,6 @@ Nous travaillons avec le jeu de données de \cite{al2020dataset} qui contient :
         \item Normales : 133 images (17\%)
     \end{itemize}
 \end{itemize}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{class_distribution.png}
-    \caption{Répartition des classes dans le dataset}
-    \label{fig:class_dist}
-\end{figure}
 
 \subsection{Analyse Exploratoire (EDA)}
 Les résultats clés de notre analyse :
@@ -101,6 +103,8 @@ Les résultats clés de notre analyse :
     \end{tabular}
     \label{tab:masks}
 \end{table}
+
+\linebreak
 
 \begin{figure}[h]
     \centering
@@ -159,7 +163,5 @@ dataset = BreastUltrasoundDataset(
 )
 \end{verbatim}
 
-\bibliographystyle{plain}
-\bibliography{references}
 
 \end{document}
