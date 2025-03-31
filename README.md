@@ -13,4 +13,5 @@ L'analyse d'images médicales est un domaine clé en intelligence artificielle, 
 
 >🔗 Lien vers la base de données : [Cancer du sein - images d'échographies](https://www.kaggle.com/datasets/aryashah2k/breast-ultrasound-images-dataset)
 
-##  
+> [!IMPORTANT]  
+> La base de données est trop volumineuse pour travailler dessus localement. Alors nous avons travaillé sur Notebook Kaggle pour coder.
