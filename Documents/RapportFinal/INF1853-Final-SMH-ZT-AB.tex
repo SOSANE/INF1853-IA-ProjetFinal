@@ -45,7 +45,7 @@
 
 
 \begin{abstract}
-Ce projet vise à développer un système de classification des tumeurs du sein en utilisant des images ultrasonores et des techniques d'apprentissage profond. Le système prend en entrée des images échographiques et produit en sortie une classification bénigne, maligne ou normale. Nous avons utilisé un modèle ResNet-18 pré-entraîné et l'avons affiné sur un ensemble de données annotées. Les résultats montrent une précision élevée, démontrant l'efficacité de notre approche.
+Ce projet vise à développer un système de classification des tumeurs du sein en utilisant des images ultrasonores et des techniques d'apprentissage profond. Le système prend en entrée des images échographiques et produit en sortie une classification bénigne, maligne ou normale. Nous avons utilisé un modèle ResNet-18 préentraîné et l'avons affiné sur un ensemble de données annotées. Les résultats montrent une précision élevée, démontrant l'efficacité de notre approche.
 \end{abstract}
 
 \section{Définition de la Tâche}
@@ -67,7 +67,7 @@ L'IA est particulièrement adaptée à cette tâche en raison de sa capacité à
 
 \section{Brève Revue de la Littérature}
 
-Plusieurs études ont exploré l'utilisation de l'IA pour la classification des tumeurs du sein. Par exemple, les travaux venant du laboratoire Hubert Curien de Saint-Etienne\cite{mayouf2021preparation} et l'université De Echahid Echeikh Larbi Tébessi-Tébessa \cite{soltani2025detection} ont utilisés des réseaux de neurones convolutifs pour distinguer les tumeurs bénignes des malignes avec de très hauts taux de précisions. Notre approche diffère par l'utilisation de ResNet-18 et par l'inclusion d'une classe "normale" pour améliorer la spécificité.
+Plusieurs études ont exploré l'utilisation de l'IA pour la classification des tumeurs du sein. Par exemple, les travaux venant du laboratoire Hubert Curien de Saint-Etienne\cite{mayouf2021preparation} et de l'université De Echahid Echeikh Larbi Tébessi-Tébessa \cite{soltani2025detection} ont utilisé des réseaux de neurones convolutifs pour distinguer les tumeurs bénignes des malignes avec de très hauts taux de précisions. Notre approche diffère par l'utilisation de ResNet-18 et par l'inclusion d'une classe "normale" pour améliorer la spécificité.
 
 \section{Matériel et Méthodes}
 
@@ -76,9 +76,9 @@ Nous avons utilisé Python avec les bibliothèques PyTorch pour l'apprentissage 
 
 \subsection{Méthodes}
 \subsubsection{Ensemble de Données}
-Nous avons utilisé le Dataset\_BUSI\_with\_GT \cite{al2020dataset} sur la plateforme Kaggle, qui contient des images échographiques annotées collectés dans l'hôpital Baheya. Les images sont en noir et blanc de dimensions diverses. Cette diversité au niveau des dimensions des images de la base de données est expliqué par le fait que les spécialistes de l'hôpital Baheya ont recadré les images pour supprimer les limites sans importances des images \cite{al2020dataset}. La diversité des dimensions des images a été décrie dans le \autoref{tab:dimensions}.
+Nous avons utilisé le Dataset\_BUSI\_with\_GT \cite{al2020dataset} sur la plateforme Kaggle, qui contient des images échographiques annotées collectées dans l'hôpital Baheya. Les images sont en noir et blanc de dimensions diverses. Cette diversité au niveau des dimensions des images de la base de données est expliquée par le fait que les spécialistes de l'hôpital Baheya ont recadré les images pour supprimer les limites sans importance des images \cite{al2020dataset}. La diversité des dimensions des images a été décrite dans le \autoref{tab:dimensions}.
 
-La classe \enquote{UltrasoundDataset} a été créée afin de gérer le chargement des données:
+La classe \enquote{UltrasoundDataset} a été créée afin de gérer le chargement des données :
 \begin{verbatim}
 # Chargement des données d'entraînement
 training_dataset = UltrasoundDataset(
@@ -92,7 +92,7 @@ training_dataset = UltrasoundDataset(
         ))
 \end{verbatim}
 
-Les images de la base de données sont classifiées dans les catégories suivantes: bégnines, malignes et normales. Il y a 780 images ultrasonores dans la base de données et sont réparties de cette maniére:
+Les images de la base de données sont classifiées dans les catégories suivantes : bénignes, malignes et normales. Il y a 780 images ultrasonores dans la base de données, et elles sont réparties de cette manière :
 \begin{itemize}
     \item Bénignes : 437 images (56\%)
     \item Malignes : 210 images (27\%)
@@ -113,7 +113,8 @@ Les images de la base de données sont classifiées dans les catégories suivant
     \label{tab:dimensions}
 \end{table}
 
-Des spécialistes de l'hôpital de Baheya ont analysés chaque image, puis ont créées une version masqué pour chaque image prise par l'échographie. Dans la base de données, les images masqués finissent avec le suffixe \enquote{\_mask}. Ces images masqués délimitent en blanc la tumeur sur les échographies. Naturellement, les images venant d'une patiente sans tumeur (classifié comme normale) sont entièrement absent de pixels blancs. Un exemple d'images venant des échographies et de leurs masques correspondants peut être trouvé dans la \autoref{fig:samples}.
+\break
+Des spécialistes de l'hôpital de Baheya ont analysé chaque image, puis ont créé une version masquée pour chaque image prise par l'échographie. Dans la base de données, les images masquées finissent avec le suffixe \enquote{\_mask}. Ces images masquées délimitent en blanc la tumeur sur les échographies. Naturellement, les images venant d'une patiente sans tumeur (classée comme normale) sont entièrement absentes de pixels blancs. Un exemple d'images venant des échographies et de leurs masques correspondants peut être trouvé dans la \autoref{fig:samples}.
 
 \begin{figure}[h]
     \centering
@@ -122,7 +123,7 @@ Des spécialistes de l'hôpital de Baheya ont analysés chaque image, puis ont c
     \label{fig:samples}
 \end{figure}
 
-Une analyse supplémentaire des images masquées a été performé afin de connaître certaines statisques clés de la superficie tumorale (en pixels), les résultats de cette analyse est inclues dans le \autoref{tab:masks}.
+Une analyse supplémentaire des images masquées a été performée afin de connaître certaines statistiques clés de la superficie tumorale (en pixels). Les résultats de cette analyse sont inclus dans le \autoref{tab:masks}.
 
 \begin{table}[h]
     \centering
@@ -141,16 +142,16 @@ Une analyse supplémentaire des images masquées a été performé afin de conna
 
 Les données ont été divisées en ensembles d'entraînement (80\%) et de test (20\%).
 
-Afin de rendre la base de données utiles pour la création du modèle d'apprentissage profond, certaines tâches doivent être complétés.
+Afin de rendre la base de données utile pour la création du modèle d'apprentissage profond, certaines tâches doivent être complétées.
 
-La phase de prétraitement et de transformation des données prends en compte les analyses d'exploration de la base de données. Il y a premièrement un probléme de déséquilibre des classes, car la majorité des images proviennent de patientes atteintes de tumeur bégnine (soit 56\% des données). Pour prévenir la possibilité que le modèle soit biaisé par les images classifiées comme \enquote{bégnines}, il est impératif d'implémenter une fonction de coût pondérée:
+La phase de prétraitement et de transformation des données prend en compte les analyses d'exploration de la base de données. Il y a premièrement un probléme de déséquilibre des classes, car la majorité des images proviennent de patientes atteintes de tumeur bénigne (soit 56\% des données). Pour prévenir la possibilité que le modèle soit biaisé par les images classifiées comme \enquote{bénigne}, il est impératif d'implémenter une fonction de coût pondérée :
 
 \begin{equation}
         w_c = \frac{N}{C \times N_c}
     \end{equation}
 où $N$=total, $C$=classes, $N_c$=échantillons par classe
 
-De plus, l'analyse préliminaire a aussi détecté la très grande grande variété de dimensions des images. Les images ont alors été redimensionnées à $256\times256$ px en préservant le ratio d'aspect. Les images originales ont aussi reçues ces transformations supplémentaires:
+De plus, l'analyse préliminaire a aussi détecté la très grande variété de dimensions des images. Les images ont alors été redimensionnées à $256\times256$ px en préservant le ratio d'aspect. Les images originales ont aussi reçu ces transformations supplémentaires :
 
 \begin{itemize}
         \item Rotation aléatoire ($\pm15^\circ$)
@@ -158,11 +159,11 @@ De plus, l'analyse préliminaire a aussi détecté la très grande grande varié
         \item Ajustement de contraste
 \end{itemize}
 
-Les images originales ont été normalisés avec les statistiques calculés par la base de données d'ImageNet, soit: $\mu=[0.485,0.456,0.406]$, $\sigma=[0.229,0.224,0.225]$
+Les images originales ont été normalisées avec les statistiques calculées par la base de données d'ImageNet, soit : $\mu=[0.485,0.456,0.406]$, $\sigma=[0.229,0.224,0.225]$
 
-Quant aux images masqués, elles ont simplement été redimensionnées et recadrées.
+Quant aux images masquées, elles ont simplement été redimensionnées et recadrées.
 
-Une classe appelé \enquote{ImageTransform} a été créée pour simplifier le processus de prétraitement des données.
+Une classe appelée \enquote{ImageTransform} a été créée pour simplifier le processus de prétraitement des données.
 
 \begin{verbatim}
 # Classe pour prétraiter et transformer les données
@@ -178,7 +179,7 @@ class ImageTransform:
 \end{verbatim}
 
 \subsubsection{Modèle}
-Nous avons utilisé ResNet-18 pré-entraîné sur ImageNet et l'avons affiné avec nos données. La fonction de perte utilisée est l'entropie croisée, et l'optimiseur est Adam.
+Nous avons utilisé ResNet-18 préentraîné sur ImageNet et l'avons affiné avec nos données. La fonction de perte utilisée est l'entropie croisée, et l'optimiseur est Adam.
 
 \enquote{BreastUltrasoundModel} est la classe de l'architecture du modèle de réseaux de neurones. La classe prend en compte les caractéristiques des images originales, leurs masques correspondants et la superficie des tumeurs.
 
@@ -197,7 +198,7 @@ La taille des batchs est de 32 échantillons à la fois, pour les données d'ent
 La boucle d'entraînement dure environ 9 epochs (\textit{époques} en français), soit 9 itérations de la boucle d'entraînement.
 
 \subsection{Évaluation}
-Les performances ont été évaluées en termes de précision, rappel et F1-score. Nous avons également utilisé des matrices de confusion pour analyser les erreurs de classification. La \autoref{fig:confusionmatrix} contient la matrice de confusion de l'epoch 20 lors de l'entraînement.
+Les performances ont été évaluées en termes de précision, de rappel et F1-score. Nous avons également utilisé des matrices de confusion pour analyser les erreurs de classification. La \autoref{fig:confusionmatrix} contient la matrice de confusion de l'epoch 20 lors de l'entraînement.
 
 Une courbe ROC a aussi été générée pour mesurer la performance du classificateur. La courbe ROC donne le taux de vrais positifs en fonction du taux de faux positifs \cite{frwiki:224482682}.
 
@@ -226,7 +227,7 @@ Normale & 1.00 & 1.00 & 1.00 \\
 \end{figure}
 
 Nous avons d'autant plus performé une évaluation du modèle avancé en générant une courbe ROC. La courbe ROC représente une courbe de probabilité \cite{narkhede2018understanding}.
-Le score AUC (\enquote{\textit{Area Under Curve}}, soit l'aire sous la courbe), va quant à elle, représente le degrée de séparabilité. Il permet de déterminer à quel point un modèle est capable de distinguer les classes \cite{narkhede2018understanding}. La \autoref{fig:curve} représente la courbe ROC.
+Le score AUC (\enquote{\textit{Area Under Curve}}, soit l'aire sous la courbe), va quant à lui, représenter le degrée de séparabilité. Il permet de déterminer à quel point un modèle est capable de distinguer les classes \cite{narkhede2018understanding}. La \autoref{fig:curve} représente la courbe ROC.
 \clearpage
 
 \begin{figure}[h]
@@ -253,7 +254,7 @@ Le score AUC (\enquote{\textit{Area Under Curve}}, soit l'aire sous la courbe), 
 
 
 \subsection{Analyse}
-Le modèle a montré une bonne performance globale, avec un F1-score moyen de 0.83. Le modèle excellait particulièrement avec la classification des images normales. Les erreurs de classification étaient principalement entre les classes bénignes et malignes, ce qui est cohérent avec la littérature.
+Le modèle a montré une bonne performance globale, avec un F1-score moyen de 0,83. Le modèle excellait particulièrement avec la classification des images normales. Les erreurs de classification étaient principalement entre les classes bénignes et malignes, ce qui est cohérent avec la littérature.
 
 De plus, chaque catégorie du classificateur a obtenu un haut score AUC. Le \autoref{tab:auccurve} représente le score AUC pour chaque classe.
 
